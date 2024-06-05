@@ -28,7 +28,4 @@ public class MultimediaRequest {
             message = "La url debe tener entre 1 y 3000 caracteres"
     )
     private String url;
-    @NotNull(message = "El id de la leccion es obligatorio")
-    @Min(value = 1, message = "El id de la leccion debe ser mayor a cero")
-    private Long lesson;
 }

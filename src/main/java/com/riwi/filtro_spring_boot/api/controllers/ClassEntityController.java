@@ -27,11 +27,13 @@ public class ClassEntityController {
      public ResponseEntity<Page<ClassEntityBasicResponse>> getAll(
              @RequestParam(defaultValue = "1") int page,
              @RequestParam(defaultValue = "10") int size,
-             @RequestHeader(required = false) SortType sortType
+             @RequestHeader(required = false) SortType sortType,
+             @RequestParam(defaultValue = "") String name,
+             @RequestParam(defaultValue = "") String description
      ) {
          if (Objects.isNull(sortType))
              sortType = SortType.NONE;
-         return ResponseEntity.ok(this.classEntityService.getAllBasic(page - 1, size, sortType));
+         return ResponseEntity.ok(this.classEntityService.getAllBasic(page - 1, size, sortType,name,description));
      }
 
 

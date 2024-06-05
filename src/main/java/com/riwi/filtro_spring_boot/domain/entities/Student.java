@@ -1,6 +1,7 @@
 package com.riwi.filtro_spring_boot.domain.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class Student {
     private Long id;
     @Column(nullable = false)
     private String name;
+    @Email
     @Column(nullable = false)
     private String email;
     @Column(nullable = false)

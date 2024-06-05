@@ -24,7 +24,6 @@ public class LessonResponse {
     private String content;
     private LocalDateTime created_at;
     private Boolean active;
-
     private ClassEntityBasicResponse classEntity;
     private List<MultimediaBasicResponse> multimedia;
 }
