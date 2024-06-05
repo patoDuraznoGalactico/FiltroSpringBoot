@@ -7,6 +7,6 @@ import com.riwi.filtro_spring_boot.utils.enums.SortType;
 import org.springframework.data.domain.Page;
 
 public interface IClassEntityService extends CrudService<ClassEntityRequest, ClassEntityResponse,Long>{
-    public Page<ClassEntityBasicResponse> getAllBasic(int page, int size, SortType sort);
+    public Page<ClassEntityBasicResponse> getAllBasic(int page, int size, SortType sort, String name,String description);
     public String FIELD_BY_SORT = "courseName";
 }

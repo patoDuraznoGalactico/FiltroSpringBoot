@@ -100,12 +100,12 @@ public class ClassEntityService implements IClassEntityService {
     }
     private ClassEntity find(Long id){
         return this.classEntityRepository.findById(id)
-                .orElseThrow(()-> new BadRequestException("Clases"));
+                .orElseThrow(()-> new BadRequestException("Class"));
     }
 
 
     @Override
-    public Page<ClassEntityBasicResponse> getAllBasic(int page, int size, SortType sort) {
+    public Page<ClassEntityBasicResponse> getAllBasic(int page, int size, SortType sort,String name,String description) {
         if (page<0)
             page=0;
         PageRequest pagination= null;
@@ -114,7 +114,16 @@ public class ClassEntityService implements IClassEntityService {
             case ASC -> pagination = PageRequest.of(page,size, Sort.by(FIELD_BY_SORT).ascending());
             case DESC -> pagination = PageRequest.of(page,size, Sort.by(FIELD_BY_SORT).descending());
         }
-
-        return this.classEntityRepository.findAll(pagination).map(this::entityToRespBasic);
+        Page<ClassEntityBasicResponse> pageResponse = this.classEntityRepository.findAll(pagination).map(this::entityToRespBasic);
+        pageResponse = pageResponse
+                .map(response -> {
+                    if (response.getActive() == true){
+                        if (response.getName().contains(name) && (response.getDescription().contains(description))){
+                            return response;
+                        }
+                    }
+                    return null;
+                });
+        return pageResponse;
     }
 }
