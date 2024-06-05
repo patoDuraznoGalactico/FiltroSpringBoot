@@ -1,0 +1,13 @@
+package com.riwi.filtro_spring_boot;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class FiltroSpringBootApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
